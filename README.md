@@ -11,9 +11,9 @@ yarn add hydux-preact # or npm i hydux-preact
 
 ```js
 import _app from 'hydux'
-import withpreact, { h } from 'hydux-preact'
+import withPreact, { h } from 'hydux-preact'
 
-let app = withpreact()(_app)
+let app = withPreact()(_app)
 
 if (process.env.NODE_ENV === 'development') {
   require('preact/debug');

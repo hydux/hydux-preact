@@ -1,14 +1,20 @@
-/// <reference types="react" />
-import * as React from 'react';
-import { App, ActionsType, Sub } from 'hydux';
-export { React, Sub };
+import { App, ActionsType } from 'hydux';
+import { h, Component } from 'preact';
+declare const React: {
+    createElement: typeof h;
+};
+export { React, h };
+export declare class PureComp extends Component {
+    shouldComponentUpdate(nextProps: any, nextState: any): any;
+    render(): any;
+}
 export declare function PureView(props: any): JSX.Element;
-export declare abstract class HyduxComponent<Props, State, Actions> extends React.PureComponent<Props, {
+export declare abstract class HyduxComponent<Props, State, Actions> extends Component<Props, {
     state: State;
 }> {
-    abstract init: (props: Props) => State;
+    abstract init: (props: this['props']) => State;
     abstract actions: ActionsType<State, Actions>;
-    abstract view: (props: Props, state: State, actions: Actions) => JSX.Element | null | false;
+    abstract view: (props: this['props'], state: State, actions: Actions) => JSX.Element | null;
     ctx: {
         actions: Actions;
         state: State;
@@ -18,14 +24,10 @@ export declare abstract class HyduxComponent<Props, State, Actions> extends Reac
     };
     constructor(props: any);
     componentWillMount(): void;
-    render(): false | JSX.Element | null;
+    render(): JSX.Element | null;
 }
-export declare type Props = {
-    text?: string;
-    onSuccess?: () => void;
-    onCancel?: () => void;
-};
 export interface Options {
-    hydrate?: boolean;
+    raf?: boolean;
+    debug?: boolean;
 }
-export default function withReact<State, Actions>(container?: any, options?: Options): (app: App<State, Actions>) => App<State, Actions>;
+export default function withPreact<State, Actions>(container?: Element, options?: Options): (app: App<State, Actions>) => App<State, Actions>;

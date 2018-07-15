@@ -1,17 +1,21 @@
 import app, { App, ActionsType, noop, Sub } from 'hydux'
 import { h, render as _render, Component } from 'preact'
+import shallowCompare from 'shallow-compare'
 
 const React = { createElement: h }
 
 export { React, h }
 
-class PureComp extends Component {
+export class PureComp extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState)
+  }
   render() {
     const { children } = this.props
     if (typeof children === 'function') {
-      return <div>{children}</div>
+      return (children as any)()
     }
-    return <div>{children}</div>
+    return children
   }
 }
 

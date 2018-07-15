@@ -20,6 +20,10 @@
   version "4.14.74"
   resolved "http://registry.npm.taobao.org/@types/lodash/download/@types/lodash-4.14.74.tgz#ac3bd8db988e7f7038e5d22bd76a7ba13f876168"
 
+"@types/lodash@^4.14.112":
+  version "4.14.112"
+  resolved "http://registry.npm.taobao.org/@types/lodash/download/@types/lodash-4.14.112.tgz#4a8d8e5716b97a1ac01fe1931ad1e4cba719de5a"
+
 "@types/lru-cache@^4.1.0":
   version "4.1.0"
   resolved "http://registry.npm.taobao.org/@types/lru-cache/download/@types/lru-cache-4.1.0.tgz#ef69ce9c3ebb46bd146f0d80f0c1ce38b0508eae"
@@ -1599,10 +1603,11 @@ https-browserify@^1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/https-browserify/download/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
 
-hydux@^0.4.6:
-  version "0.4.6"
-  resolved "http://registry.npm.taobao.org/hydux/download/hydux-0.4.6.tgz#9e13bf8ef54001ed033e03ac0730369ef832bdc5"
+hydux@^0.5.3:
+  version "0.5.3"
+  resolved "http://registry.npm.taobao.org/hydux/download/hydux-0.5.3.tgz#4401206d12fb2098fbcd6d67bda780e4a102ba33"
   dependencies:
+    lru-cache "^4.1.3"
     tslib "^1.8.1"
     ultradom "2.0.0"
   optionalDependencies:
@@ -1873,8 +1878,8 @@ js-tokens@^3.0.2:
   resolved "http://registry.npm.taobao.org/js-tokens/download/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
 
 jsan@^3.1.3:
-  version "3.1.9"
-  resolved "http://registry.npm.taobao.org/jsan/download/jsan-3.1.9.tgz#2705676c1058f0a7d9ac266ad036a5769cfa7c96"
+  version "3.1.10"
+  resolved "http://registry.npm.taobao.org/jsan/download/jsan-3.1.10.tgz#ba9917b864defff567e0c990a34ae7a8d5eb1d90"
 
 jsbn@~0.1.0:
   version "0.1.1"
@@ -2047,6 +2052,13 @@ lowercase-keys@^1.0.0:
 lru-cache@^4.0.1:
   version "4.1.1"
   resolved "http://registry.npm.taobao.org/lru-cache/download/lru-cache-4.1.1.tgz#622e32e82488b49279114a4f9ecf45e7cd6bba55"
+  dependencies:
+    pseudomap "^1.0.2"
+    yallist "^2.1.2"
+
+lru-cache@^4.1.3:
+  version "4.1.3"
+  resolved "http://registry.npm.taobao.org/lru-cache/download/lru-cache-4.1.3.tgz#a1175cf3496dfc8436c156c334b4955992bce69c"
   dependencies:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
@@ -2976,8 +2988,8 @@ sc-errors@~1.3.0:
   resolved "http://registry.npm.taobao.org/sc-errors/download/sc-errors-1.3.3.tgz#c00bc4c766a970cc8d5937d08cd58e931d7dae05"
 
 sc-formatter@~3.0.0:
-  version "3.0.1"
-  resolved "http://registry.npm.taobao.org/sc-formatter/download/sc-formatter-3.0.1.tgz#c8b3fec0eea51b883dbc22ddfeacb46cd0e8db6c"
+  version "3.0.2"
+  resolved "http://registry.npm.taobao.org/sc-formatter/download/sc-formatter-3.0.2.tgz#9abdb14e71873ce7157714d3002477bbdb33c4e6"
 
 semver-diff@^2.0.0:
   version "2.1.0"
@@ -3031,6 +3043,10 @@ sha.js@^2.4.0, sha.js@^2.4.8:
   dependencies:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
+
+shallow-compare@^1.2.2:
+  version "1.2.2"
+  resolved "http://registry.npm.taobao.org/shallow-compare/download/shallow-compare-1.2.2.tgz#fa4794627bf455a47c4f56881d8a6132d581ffdb"
 
 shebang-command@^1.2.0:
   version "1.2.0"
@@ -3392,8 +3408,8 @@ tslib@^1.0.0, tslib@^1.7.1:
   resolved "http://registry.npm.taobao.org/tslib/download/tslib-1.8.1.tgz#6946af2d1d651a7b1863b531d6e5afa41aa44eac"
 
 tslib@^1.8.1:
-  version "1.9.0"
-  resolved "http://registry.npm.taobao.org/tslib/download/tslib-1.9.0.tgz#e37a86fda8cbbaf23a057f473c9f4dc64e5fc2e8"
+  version "1.9.3"
+  resolved "http://registry.npm.taobao.org/tslib/download/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
 
 tslint-config-standard@^7.0.0:
   version "7.0.0"
@@ -3499,9 +3515,13 @@ typescript@2.4.1:
   version "2.4.1"
   resolved "http://registry.npm.taobao.org/typescript/download/typescript-2.4.1.tgz#c3ccb16ddaa0b2314de031e7e6fee89e5ba346bc"
 
-typescript@^2.2.1, typescript@^2.6.2:
+typescript@^2.2.1:
   version "2.6.2"
   resolved "http://registry.npm.taobao.org/typescript/download/typescript-2.6.2.tgz#3c5b6fd7f6de0914269027f03c0946758f7673a4"
+
+typescript@^2.9.2:
+  version "2.9.2"
+  resolved "http://registry.npm.taobao.org/typescript/download/typescript-2.9.2.tgz#1cbf61d05d6b96269244eb6a3bce4bd914e0f00c"
 
 uglify-js@^2.6, uglify-js@^2.8.29:
   version "2.8.29"
