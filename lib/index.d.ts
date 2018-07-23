@@ -4,11 +4,31 @@ declare const React: {
     createElement: typeof h;
 };
 export { React, h };
-export declare class PureComp extends Component {
-    shouldComponentUpdate(nextProps: any, nextState: any): any;
+export declare class PureView<P = any, S = any> extends Component<P, S> {
+    shouldComponentUpdate(nextProps: any, nextState: any, nextContext: any): boolean;
     render(): any;
 }
-export declare function PureView(props: any): JSX.Element;
+export declare class ErrorBoundary extends Component<{
+    renderMessage?: (error: Error, errorInfo?: {
+        componentStack: string;
+    }) => any;
+    report?: (error: Error, errorInfo?: {
+        componentStack: string;
+    }) => void;
+    children: any;
+}> {
+    state: {
+        error: Error | undefined;
+        errorInfo: {
+            componentStack: string;
+        } | undefined;
+    };
+    report(error: any, errorInfo: any): void;
+    render(): any;
+    componentDidCatch(error: Error, errorInfo: {
+        componentStack: string;
+    }): void;
+}
 export declare abstract class HyduxComponent<Props, State, Actions> extends Component<Props, {
     state: State;
 }> {
