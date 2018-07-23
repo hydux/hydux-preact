@@ -6,27 +6,55 @@ const React = { createElement: h }
 
 export { React, h }
 
-export class PureComp extends Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
+function shallowDiffers (a, b) {
+  for (let i in a) if (!(i in b)) return true
+  for (let i in b) if (i !== 'children' && a[i] !== b[i]) return true
+  return false
+}
+
+export class PureView<P = any,S = any> extends Component<P, S> {
+  shouldComponentUpdate(nextProps, nextState, nextContext) {
+    return shallowDiffers(this.props, nextProps)
   }
   render() {
     const { children } = this.props
-    if (typeof children === 'function') {
-      return (children as any)()
-    }
-    return children
+    return typeof children === 'function' ? (children as any)() : children
   }
 }
 
-export function PureView(props) {
-  return (
-    <PureComp {...props}>
-      {props.children}
-    </PureComp>
-  )
+export class ErrorBoundary extends Component<{
+  renderMessage?: (error: Error, errorInfo?: { componentStack: string }) => any
+  report?: (error: Error, errorInfo?: { componentStack: string }) => void
+  children: any
+}> {
+  state = {
+    error: void 0 as Error | undefined,
+    errorInfo: void 0 as { componentStack: string } | undefined
+  }
+  report(error, errorInfo) {
+    const { report } = this.props
+    if (report) {
+      return report(error, errorInfo)
+    }
+    console.error(error, errorInfo)
+  }
+  render() {
+    let { error, errorInfo } = this.state
+    const { report, renderMessage, children } = this.props
+    if (!error) {
+      try {
+        return typeof children === 'function' ? children() : children
+      } catch (err) {
+        error = err
+        this.report(error, errorInfo)
+      }
+    }
+    return renderMessage ? renderMessage(error!, errorInfo) : null
+  }
+  componentDidCatch(error: Error, errorInfo: { componentStack: string }) {
+    this.report(error, errorInfo)
+  }
 }
-
 export abstract class HyduxComponent<Props, State, Actions> extends Component<Props, { state: State }> {
   abstract init: (props: this['props']) => State
   abstract actions: ActionsType<State, Actions>
