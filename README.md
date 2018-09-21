@@ -3,7 +3,7 @@ preact renderer for hydux.
 
 ## Install
 ```sh
-yarn add hydux-preact # or npm i hydux-preact
+yarn add hydux hydux-preact # or npm i hydux hydux-preact
 ```
 
 ## Usage

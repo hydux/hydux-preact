@@ -54,8 +54,10 @@
     "webpack": "^3.10.0"
   },
   "dependencies": {
-    "hydux": "^0.5.3",
     "preact": "^8.2.9",
     "shallow-compare": "^1.2.2"
+  },
+  "optionalDependencies": {
+    "hydux": "^0.5.5"
   }
 }
