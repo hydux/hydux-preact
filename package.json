@@ -18,6 +18,10 @@
     "type": "git",
     "url": "git+https://github.com/hydux/hydux-preact.git"
   },
+  "files": [
+    "lib",
+    "dist"
+  ],
   "keywords": [
     "hydux",
     "elm",
